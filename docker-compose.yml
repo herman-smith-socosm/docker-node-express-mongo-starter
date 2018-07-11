@@ -4,10 +4,9 @@ services:
     container_name: app-starter
     build: .
     image: node-express-mongo-starter
-    command: "npm run ${NPM_SCRIPT}"
+    command: "npm run ${BUILD_ENVIRONMENT}"
     volumes:
-      - .:/usr/app/
-      - /usr/app/node_modules
+      - "./${SRC_VOLUME}:/usr/app/src"
     ports:
       - "3000:3000"
     depends_on:
