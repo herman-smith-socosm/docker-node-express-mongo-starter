@@ -1,6 +1,7 @@
 version: '2'
 services:
   app:
+    container_name: app-starter
     build: .
     image: node-express-mongo-starter
     command: npm run dev
