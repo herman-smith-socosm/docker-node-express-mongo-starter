@@ -1,0 +1,23 @@
+version: '2'
+services:
+  app:
+    build: .
+    image: node-express-mongo-starter
+    command: npm run dev
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/starter
+  mongo:
+    container_name: mongo
+    image: mongo:4.0.0-xenial
+    volumes:
+      - ./data:/data/db
+      - ./backup:/backup
+    ports:
+      - "27017:27017"      
