@@ -4,7 +4,7 @@ services:
     container_name: app-starter
     build: .
     image: node-express-mongo-starter
-    command: npm run dev
+    command: "npm run ${NPM_SCRIPT}"
     volumes:
       - .:/usr/app/
       - /usr/app/node_modules
