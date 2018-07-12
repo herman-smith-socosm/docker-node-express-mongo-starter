@@ -1,4 +1,4 @@
-import express from "./app";
+import App from "./app";
 import * as mongoose from "mongoose";
 
 mongoose.connect(process.env.MONGODB_URI, (err) => {
@@ -14,7 +14,8 @@ mongoose.connect(process.env.MONGODB_URI, (err) => {
 
 mongoose.connection.once('open', function() {
     console.log('Connected to MongoDb');
-    express.listen(process.env.PORT, () => {
+    const app = new App();
+    app.expressApp.listen(process.env.PORT, () => {
         console.log('Express server listening on port ' + process.env.PORT);
     })
 });

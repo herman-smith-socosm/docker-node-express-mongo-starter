@@ -20,4 +20,8 @@ export BUILD_ENVIRONMENT=$BUILD_ENVIRONMENT
 # this environment variable will determine the directory mapped from host to container volume
 export SRC_VOLUME=$SRC_VOLUME
 
-docker-compose up --build -d
+docker-compose up --build --no-start
+docker-compose start mongo
+./docker-scripts/wait-for-service.sh mongo 'waiting for connections on port'
+
+docker-compose start app
