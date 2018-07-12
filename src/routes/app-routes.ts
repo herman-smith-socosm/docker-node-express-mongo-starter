@@ -10,15 +10,15 @@ export class AppRoutes {
         app.route('/')
         .get((req: Request, res: Response, next: NextFunction) => {
             res.status(200).send({
-                tag: process.env.TAG,
-                message: 'UP',
+                service: process.env.SERVICE_TAG,
+                status: 'UP',
                 method: 'GET'
             })
         })
         .post((req: Request, res: Response, next: NextFunction) => {
             res.status(200).send({
-                tag: process.env.TAG,
-                message: 'UP',
+                service: process.env.SERVICE_TAG,
+                status: 'UP',
                 method: 'POST'
             })
         })

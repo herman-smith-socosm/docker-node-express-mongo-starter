@@ -15,7 +15,7 @@ services:
     links:
       - mongo
     environment:
-      - TAG=NODE EXPRESS MONGO STARTER
+      - SERVICE_TAG=NODE EXPRESS MONGO STARTER
       - PORT=5000
       - MONGODB_URI=mongodb://mongo:27017/starterDB
   mongo:

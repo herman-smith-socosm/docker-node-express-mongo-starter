@@ -10,7 +10,7 @@ then
     SRC_VOLUME="src"
 else
     BUILD_ENVIRONMENT="prod"
-    npm run build
+    npm run dist
     SRC_VOLUME="src_decoy"
     mkdir $SRC_VOLUME    
 fi

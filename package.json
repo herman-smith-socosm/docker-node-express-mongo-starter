@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/tsc",
-    "dev": "./node_modules/.bin/ts-node ./src/server.ts",
+    "dist": "./node_modules/.bin/tsc",
+    "dev": "./node_modules/.bin/ts-node-dev ./src/server.ts",
     "prod": "node ./dist/server.js"
   },
   "author": "",
@@ -18,7 +18,7 @@
     "mongoose": "^5.1.1"
   },
   "devDependencies": {
-    "ts-node": "^7.0.0",
+    "ts-node-dev": "^1.0.0-pre.26",
     "typescript": "^2.9.2"
   }
 }
