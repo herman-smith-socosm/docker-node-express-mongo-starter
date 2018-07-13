@@ -1,13 +1,9 @@
 version: '2'
 services:
-  app:
-    build: .
-    container_name: app
-    image: node-express-mongo-starter
-    command: "npm run ${BUILD_ENVIRONMENT}"
-    volumes:
-      - "./${SRC_VOLUME}:/usr/app/src"
-      - "./config:/usr/app/config"
+  app-a:
+    build: ./app-a/
+    container_name: app-a
+    image: node-express-mongo-starter-app-a
     ports:
       - "5000:5000"
     depends_on:
@@ -15,14 +11,28 @@ services:
     links:
       - mongo
     environment:
-      - SERVICE_TAG=NODE EXPRESS MONGO STARTER
+      - SERVICE_TAG=APP-A
       - PORT=5000
+      - MONGODB_URI=mongodb://mongo:27017/starterDB
+  app-b:
+    build: ./app-b/
+    container_name: app-b
+    image: node-express-mongo-starter-app-b
+    ports:
+      - "7000:7000"
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    environment:
+      - SERVICE_TAG=APP-B
+      - PORT=7000
       - MONGODB_URI=mongodb://mongo:27017/starterDB
   mongo:
     container_name: mongo
     image: mongo
     volumes:
-      - ./data:/data/db
-      - ./backup:/backup
+      - ./mongo-data:/data/db
+      - ./mongo-backup:/backup
     ports:
       - "27017:27017"      

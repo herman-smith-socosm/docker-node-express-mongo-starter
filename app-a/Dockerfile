@@ -6,5 +6,7 @@ COPY package.json .
 RUN npm install --quiet
 
 COPY ./tsconfig.json ./
-COPY ./dist ./dist
 
+COPY ./src ./src
+RUN npm run dist
+RUN rm -rf ./src

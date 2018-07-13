@@ -1,0 +1,10 @@
+version: '2'
+services:
+  app-a:
+    command: "npm run dev"
+    volumes:
+      - "./app-a/src:/usr/app/src"
+  app-b:
+    command: "npm run dev"
+    volumes:
+      - "./app-b/src:/usr/app/src"

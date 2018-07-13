@@ -1,0 +1,6 @@
+version: '2'
+services:
+  app-a:
+    command: "npm run prod"
+  app-b:
+    command: "npm run prod"

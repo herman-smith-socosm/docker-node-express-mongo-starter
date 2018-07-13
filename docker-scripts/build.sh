@@ -1,27 +1,21 @@
 #!/bin/bash
 
-rm -rf dist
-rm -rf src_decoy
-
 if [ "$1" == "dev" ]
 then
-    BUILD_ENVIRONMENT="dev"
-    mkdir dist
-    SRC_VOLUME="src"
+    echo "Docker Compose Development"
+    docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build --no-start    
 else
-    BUILD_ENVIRONMENT="prod"
-    npm run dist
-    SRC_VOLUME="src_decoy"
-    mkdir $SRC_VOLUME    
+    echo "Docker Compose Production"
+    docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build --no-start    
 fi
 
-# this environment variable will affect the package.json script that is run from docker-compose.yml
-export BUILD_ENVIRONMENT=$BUILD_ENVIRONMENT
-# this environment variable will determine the directory mapped from host to container volume
-export SRC_VOLUME=$SRC_VOLUME
-
-docker-compose up --build --no-start
 docker-compose start mongo
 ./docker-scripts/wait-for-service.sh mongo 'waiting for connections on port'
+docker-compose start app-a
+docker-compose start app-b
 
-docker-compose start app
+sleep 3
+echo "***********************************"
+echo "*      STARTUP COMPLETED          *"
+echo "***********************************"
+docker-compose ps

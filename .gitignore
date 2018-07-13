@@ -114,8 +114,9 @@ typings/
 # Output of 'tsc'
 dist
 
-# Mapped volume for MongoDB data
-data
+# Mapped volumes for MongoDB data
+mongo-data
+mongo-backup
 
 
 # End of https://www.gitignore.io/api/node,macos,visualstudiocode
